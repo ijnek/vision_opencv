@@ -32,16 +32,12 @@ install(FILES
   DESTINATION include/${PROJECT_NAME}/${PROJECT_NAME})
 
 if(NOT CV_BRIDGE_DISABLE_PYTHON)
-  Python3_add_library(${PROJECT_NAME}_boost MODULE module.cpp module_opencv4.cpp)
+  Python3_add_library(${PROJECT_NAME}_boost MODULE module_opencv4.cpp)
   target_link_libraries(${PROJECT_NAME}_boost PRIVATE
     ${PROJECT_NAME}
     ${boost_python_target}
     Python3::NumPy)
   target_compile_definitions(${PROJECT_NAME}_boost PRIVATE PYTHON3)
-
-  if(OpenCV_VERSION_MAJOR VERSION_EQUAL 4)
-    target_compile_definitions(${PROJECT_NAME}_boost PRIVATE OPENCV_VERSION_4)
-  endif()
 
   set_target_properties(${PROJECT_NAME}_boost PROPERTIES
                         LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/boost/
