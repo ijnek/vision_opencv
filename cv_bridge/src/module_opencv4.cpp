@@ -115,7 +115,7 @@ public:
   }
 
   UMatData * allocate(
-    int dims0, const int * sizes, int type, void * data, size_t * step, AccessFlag flags,
+    int dims0, const int * sizes, int type, void * data, size_t * step, cv::AccessFlag flags,
     UMatUsageFlags usageFlags) const
   {
     if (data != 0) {
@@ -148,7 +148,7 @@ public:
     return allocate(o, dims0, sizes, type, step);
   }
 
-  bool allocate(UMatData * u, AccessFlag accessFlags, UMatUsageFlags usageFlags) const
+  bool allocate(UMatData * u, cv::AccessFlag accessFlags, UMatUsageFlags usageFlags) const
   {
     return stdAllocator->allocate(u, accessFlags, usageFlags);
   }
